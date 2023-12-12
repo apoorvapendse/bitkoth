@@ -1,5 +1,6 @@
 import express from 'express';
 import { router } from './router/router.js';
+import { connectDB } from './database/db.js';
 
 
 
@@ -12,6 +13,9 @@ app.use(express.urlencoded({extended:true}))
 app.use("/",router);
 
 const PORT = 4000;
-app.listen(PORT,(req,res)=>{
-    console.log("server is running on port : ",PORT);
+connectDB().then(()=>{
+
+    app.listen(PORT,(req,res)=>{
+        console.log("server is running on port : ",PORT);
+    })
 })
