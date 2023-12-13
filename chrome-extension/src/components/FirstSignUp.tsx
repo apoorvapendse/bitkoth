@@ -17,24 +17,24 @@ const FirstSignUp = () => {
   const submitHandler = async (e: React.FormEvent) => {
     e.preventDefault();
     console.log(details.useremail, details.userpassword);
-    const apiUrl = 'https://example.com/api/endpoint'; // Replace with your API endpoint
+    const apiUrl = 'https://bitkoth.onrender.com/api/add-user';
 
     const postData = {
       email:details.useremail,
       masterPassword:details.userpassword
-      // Add more key-value pairs as needed
     };
 
     const requestOptions = {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        // You may need to include additional headers like authorization tokens here
       },
       body: JSON.stringify(postData),
     };
 
-
+    
+    const result = await fetch(apiUrl,requestOptions);
+    console.log(result);
   };
 
   return (
