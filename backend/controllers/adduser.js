@@ -4,7 +4,7 @@ export async function checkPreExistence(req,res,next){
     const {email} = req.body;
     const value = await Users.findOne({email:email});
     if(value){
-        res.json({
+        res.status(404).json({
             message:"User Already Exists!!!"
         })
     }
