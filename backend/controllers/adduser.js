@@ -1,5 +1,5 @@
 import { Users } from "../model/User.js";
-
+import bcrypt from 'bcrypt'
 export async function checkPreExistence(req,res,next){
     const {email} = req.body;
     const value = await Users.findOne({email:email});
@@ -17,7 +17,9 @@ export async function addNewUser(req,res){
     const newUser = await Users.create({
         email:req.body.email,
         name:req.body.name,
-        savedPasswords:[]
+        masterPassword:await bcrypt.hash(req.body.masterPassword,10),
+        savedPasswords:[],
+        
     })
     console.log("Added new user with the details:",newUser);
     res.json({

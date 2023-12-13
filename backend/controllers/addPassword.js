@@ -1,7 +1,7 @@
 import { Users } from "../model/User.js";
 
 export async function addPassword(req,res){
-    const{email,passwordName,passwordValue} = req.body;
+    const{email,passwordName,passwordValue,masterPassword} = req.body;
     const currUser = await Users.findOne({email:email});
     if(currUser){
         try {
