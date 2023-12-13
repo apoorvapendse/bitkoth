@@ -12,7 +12,7 @@ export async function getPasswords(req,res){
             if(await bcrypt.compare(masterPassword,currUser.masterPassword)){
 
                 console.log({ passwords: currUser.savedPasswords });
-                res.status(200).json({passwords: `${currUser.savedPasswords}`});
+                res.status(200).json({passwords: currUser.savedPasswords});
             }else{
                 res.status(403).json({
                     message:"invalid password"

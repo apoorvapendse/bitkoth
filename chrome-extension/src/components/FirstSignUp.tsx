@@ -1,7 +1,12 @@
 import React, { ChangeEvent, useState } from "react";
 import '../signup.css';
 
-const FirstSignUp = () => {
+
+interface PropType{
+  setLoggedIn: React.Dispatch<React.SetStateAction<boolean>>
+}
+
+const FirstSignUp = ({setLoggedIn}:PropType) => {
   const [details, setDetails] = useState({
     useremail: "",
     userpassword: ""
@@ -34,10 +39,20 @@ const FirstSignUp = () => {
 
     
     const result = await fetch(apiUrl,requestOptions);
-    console.log(result);
+    //on successful login
+    if(result.status===200){
+      console.log("account created successfully!!!!!!!");
+      localStorage.setItem("bitkothmail",`${details.useremail}`)
+      setLoggedIn(true);
+    }
+    else{
+      alert("Account already exists");
+    }
   };
 
   return (
+    <>
+    <h1>bitkoth</h1>
     <form onSubmit={submitHandler}>
       <input
         type="email"
@@ -45,7 +60,7 @@ const FirstSignUp = () => {
         placeholder="enter email"
         onChange={handleChange}
         required
-      />
+        />
       <br />
       <input
         type="password"
@@ -53,10 +68,11 @@ const FirstSignUp = () => {
         placeholder="set password"
         onChange={handleChange}
         required
-      />
+        />
       <br />
       <button type="submit">Create Account</button>
     </form>
+        </>
   );
 };
 
