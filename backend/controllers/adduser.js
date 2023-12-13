@@ -16,7 +16,6 @@ export async function checkPreExistence(req,res,next){
 export async function addNewUser(req,res){
     const newUser = await Users.create({
         email:req.body.email,
-        name:req.body.name,
         masterPassword:await bcrypt.hash(req.body.masterPassword,10),
         savedPasswords:[],
         

@@ -6,7 +6,7 @@ const PasswordSchema = new mongoose.Schema({
 })
 
 const UserSchema = new mongoose.Schema({
-    name:String,
+   
     masterPassword:String,
     email:String,
     savedPasswords:[PasswordSchema]
