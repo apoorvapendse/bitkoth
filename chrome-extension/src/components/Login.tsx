@@ -5,12 +5,17 @@ import PasswordList from './PasswordList';
 interface Proptype {
   mail: string
 }
+interface PasswordType {
+  name: string;
+  password: string;
+  _id: string; // Assuming _id is a string, adjust accordingly
+}
 
 const Login = ({ mail }: Proptype) => {
 
   const [masterPassword, setMasterPassword] = useState("");
   const [hasAccess, setHasAccess] = useState(false);
-  const [passwords, setPasswords] = useState<string>();
+  const [passwords, setPasswords] = useState<PasswordType[]>();
 
   async function submitHandler(e: React.FormEvent) {
     e.preventDefault();

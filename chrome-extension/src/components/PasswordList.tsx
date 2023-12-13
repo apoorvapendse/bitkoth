@@ -1,4 +1,4 @@
-
+import '../list.css'
 interface PasswordType {
   name: string;
   password: string;
@@ -6,32 +6,25 @@ interface PasswordType {
 }
 
 interface PropType {
-  passwords: string | undefined;
+  passwords: PasswordType[]|undefined;
 }
 
 const PasswordList = ({ passwords }: PropType) => {
-  try {
-    if (passwords) {
-      const jsonArr: PasswordType[] = passwords.split('\n').map((jsonString: string) => JSON.parse(jsonString.trim()));
-        console.log("jsonarr:",jsonArr);
-      return (
-        <>
-          <h1>Previous passwords</h1>
-          {jsonArr.map((password, index) => (
-            <div key={index}>
-              <p>Name: {password.name}</p>
-              <p>Password: {password.password}</p>
-            </div>
-          ))}
-        </>
-      );
-    } else {
-      return <p>No passwords provided</p>;
-    }
-  } catch (error) {
-    console.error('Error parsing JSON:', error);
-    return <p>Error parsing JSON</p>;
-  }
+  console.log(passwords);
+  return(
+    <>
+    <h3>Previous Passwords</h3>
+    {passwords?.map((item)=>{
+        return(
+            <p>
+            <span className="password-text">Name:{item.name}</span>
+            <br />
+            <span className="password-text">Password:{item.password}</span>
+            </p>
+        )
+    })}
+    </>
+  )
 };
 
 export default PasswordList;
