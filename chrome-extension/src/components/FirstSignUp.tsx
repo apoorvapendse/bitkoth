@@ -39,7 +39,7 @@ const FirstSignUp = ({setLoggedIn}:PropType) => {
 
     
     const result = await fetch(apiUrl,requestOptions);
-    //on successful login
+    //on successful login 
     if(result.status===200){
       console.log("account created successfully!!!!!!!");
       localStorage.setItem("bitkothmail",`${details.useremail}`)
