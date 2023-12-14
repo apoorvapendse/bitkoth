@@ -60,6 +60,7 @@ const Login = ({ mail }: Proptype) => {
         <h3>Hello {mail}</h3>
         <form onSubmit={submitHandler}>
           <input type="password" placeholder="Enter Master Password" onChange={(e) => setMasterPassword(e.target.value)} />
+          <br />
           <button type='submit'>Submit</button>
         </form>
       </>
@@ -68,7 +69,7 @@ const Login = ({ mail }: Proptype) => {
   else{
     return(
       
-      <PasswordList passwords={passwords}/>
+      <PasswordList passwords={passwords} mail={mail}/>
     )
   }
 }

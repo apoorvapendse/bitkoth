@@ -1,3 +1,28 @@
 .password-text{
+    font-size: medium;
+}
+*{
+    ::-webkit-scrollbar{
+        display: none;
+    }
+}
+.list-container{
+    max-height: 400px !important;
+    overflow-y: scroll;
+}
+.password-options{
+    margin-left: 2px;
+    font-size: small;
+}
+.create-password-btn{
+    padding:14px;
     font-size: large;
+    height: 25px;
+    width: 25px;
+    border-radius: 100%;
+    color:blue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
 }
