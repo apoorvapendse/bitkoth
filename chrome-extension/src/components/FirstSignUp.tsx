@@ -13,7 +13,9 @@ const FirstSignUp = ({setLoggedIn}:PropType) => {
     userpassword: ""
   });
   const [goToLoginPage,setGoToLoginPage] = useState(false);
-
+  const [greenSignal,setGreenSignal] = useState(false);
+  const [loginMail,setLoginMail] = useState("");
+  // green signal if true will redirect to login page with the filled mail
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setDetails((prevDetails) => ({
       ...prevDetails,
@@ -22,18 +24,19 @@ const FirstSignUp = ({setLoggedIn}:PropType) => {
   };
 
   async function checkAccount(mail:string){
-    const result = await fetch(`https://bitkoth.onrender.com/api/check-presence?mail=${mail}`);
+    console.log("searching for email:",mail);
+    const result = await fetch(`http://localhost:4000/api/check-presence?mail=${mail}`);
     console.log(result);
     if(result.status===200){
       localStorage.setItem("bitkothmail",`${mail}`)
-      return(
-        <Login mail={mail}/>
-      )
+      setLoginMail(mail);
+      setGreenSignal(true);
     }
     else{
       alert("mail does not exist in database, please create account")
     }
   }
+
   const submitHandler = async (e: React.FormEvent) => {
     e.preventDefault();
     console.log(details.useremail, details.userpassword);
@@ -65,6 +68,10 @@ const FirstSignUp = ({setLoggedIn}:PropType) => {
     }
   };
 
+
+  if(greenSignal===true){
+    return <Login mail={loginMail}/>
+  }
   if(goToLoginPage===true){
       const mail = prompt("Enter email to login");
       if(mail){ 

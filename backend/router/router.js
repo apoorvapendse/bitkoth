@@ -14,4 +14,4 @@ router.post('/api/add-user', checkPreExistence, addNewUser);
 router.post('/api/add-password',addPassword);
 router.post('/api/get-all-passwords',getPasswords);
 router.post('/api/edit-password',editPassword);
-router.post('/api/check-presence',checkUser);
+router.get('/api/check-presence',checkUser);
