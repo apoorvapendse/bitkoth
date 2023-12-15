@@ -63,6 +63,10 @@ const Login = ({ mail }: Proptype) => {
           <br />
           <button type='submit'>Submit</button>
         </form>
+          <button onClick={()=>{
+            localStorage.removeItem("bitkothmail")
+            window.location.reload()
+          }}>Logout</button>
       </>
     )
   }
