@@ -69,7 +69,7 @@ const Login = ({ mail }: Proptype) => {
   else{
     return(
       
-      <PasswordList passwords={passwords} mail={mail}/>
+      <PasswordList passwords={passwords} mail={mail} masterPassword={masterPassword}/>
     )
   }
 }

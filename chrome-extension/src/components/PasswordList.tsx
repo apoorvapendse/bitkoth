@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import '../list.css'
 import PasswordMenu from './PasswordMenu';
 interface PasswordType {
@@ -9,18 +9,73 @@ interface PasswordType {
 
 interface PropType {
   passwords: PasswordType[]|undefined;
-  mail:string
+  mail:string,
+  masterPassword:string
 }
 
 
-const PasswordList = ({ passwords,mail }: PropType) => {
+const PasswordList = ({ passwords,mail,masterPassword }: PropType) => {
   const[createPassword,setCreatePassword]  = useState<boolean>(false);
+  const[editPassword,setEditPassword]  = useState({
+    passwordName:"",
+    passwordValue:"",
+    arrayIndex:-1
+  });
+  
+  const [pwds,setPwds] = useState(passwords);
   console.log(passwords);
 
+  async function fetchPasswords(){
+    const apiUrl = 'https://bitkoth.onrender.com/api/get-all-passwords';
+
+    const postData = {
+      email: mail,
+      masterPassword: masterPassword,
+    };
+
+    const requestOptions = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(postData),
+    };
+
+
+    const response = await fetch(apiUrl, requestOptions);
+    if (response.status === 200) {
+      const list = await response.json();
+      const passwords = list.passwords;
+      
+      setPwds(passwords);
+  
+
+    }
+    else {
+      alert("invalid password!!!!");
+    }
+
+  }
+
+  useEffect(()=>{
+    fetchPasswords();
+  },[createPassword,editPassword])
 
   if(createPassword===true){
     return(
-      <PasswordMenu passwordName='' passwordValue='' mail={mail} />
+      <PasswordMenu passwordName='' passwordValue='' mail={mail} setCreatePassword={setCreatePassword} arrayIndex={-1}
+      setEditPassword={setEditPassword} />
+    )
+  }
+  if(editPassword.arrayIndex!==-1){
+    return(
+      <PasswordMenu 
+      passwordName={editPassword.passwordName}
+      passwordValue={editPassword.passwordValue}
+      mail={mail}
+      setCreatePassword={setCreatePassword}
+      setEditPassword={setEditPassword}
+      arrayIndex={editPassword.arrayIndex}/>
     )
   }
   return(
@@ -28,7 +83,7 @@ const PasswordList = ({ passwords,mail }: PropType) => {
     <h3>Previous Passwords</h3>
     <div className='list-container'>
 
-    {passwords?.map((item)=>{
+    {pwds?.map((item,index)=>{
       return(
             <p>
             <span className="password-text">Name:{item.name}</span>
@@ -42,7 +97,14 @@ const PasswordList = ({ passwords,mail }: PropType) => {
                 alert("copied to clipboard");
               })
             }}>copy</button>
-            <button>edit</button>
+            <button onClick={()=>{
+              setEditPassword({
+                arrayIndex:index,
+                passwordName:item.name,
+                passwordValue:item.password
+              })
+              
+            }}>edit</button>
 
             </span>
             </p>
