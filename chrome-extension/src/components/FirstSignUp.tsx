@@ -1,5 +1,6 @@
 import React, { ChangeEvent, useState } from "react";
 import '../signup.css';
+import Login from "./Login";
 
 
 interface PropType{
@@ -11,6 +12,7 @@ const FirstSignUp = ({setLoggedIn}:PropType) => {
     useremail: "",
     userpassword: ""
   });
+  const [goToLoginPage,setGoToLoginPage] = useState(false);
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setDetails((prevDetails) => ({
@@ -19,6 +21,19 @@ const FirstSignUp = ({setLoggedIn}:PropType) => {
     }));
   };
 
+  async function checkAccount(mail:string){
+    const result = await fetch(`https://bitkoth.onrender.com/api/check-presence?mail=${mail}`);
+    console.log(result);
+    if(result.status===200){
+      localStorage.setItem("bitkothmail",`${mail}`)
+      return(
+        <Login mail={mail}/>
+      )
+    }
+    else{
+      alert("mail does not exist in database, please create account")
+    }
+  }
   const submitHandler = async (e: React.FormEvent) => {
     e.preventDefault();
     console.log(details.useremail, details.userpassword);
@@ -50,6 +65,15 @@ const FirstSignUp = ({setLoggedIn}:PropType) => {
     }
   };
 
+  if(goToLoginPage===true){
+      const mail = prompt("Enter email to login");
+      if(mail){ 
+        checkAccount(mail);
+      }else{
+        alert("cannot use null value for email")
+      }
+    
+  }
   return (
     <>
     <h1>bitkoth</h1>
@@ -72,6 +96,8 @@ const FirstSignUp = ({setLoggedIn}:PropType) => {
       <br />
       <button type="submit">Create Account</button>
     </form>
+    <br />
+    <button onClick={()=>setGoToLoginPage(true)}>Go To Login</button>
         </>
   );
 };
