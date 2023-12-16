@@ -25,7 +25,7 @@ const FirstSignUp = ({setLoggedIn}:PropType) => {
 
   async function checkAccount(mail:string){
     console.log("searching for email:",mail);
-    const result = await fetch(`http://localhost:4000/api/check-presence?mail=${mail}`);
+    const result = await fetch(`https://bitkoth.onrender.com/api/check-presence?mail=${mail}`);
     console.log(result);
     if(result.status===200){
       localStorage.setItem("bitkothmail",`${mail}`)
