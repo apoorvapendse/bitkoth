@@ -81,6 +81,9 @@ const PasswordList = ({ passwords,mail,masterPassword }: PropType) => {
   return(
     <>
     <h3>Previous Passwords</h3>
+    <button onClick={()=>{
+      fetchPasswords();
+    }}>Refresh</button>
     <div className='list-container'>
 
     {pwds?.map((item,index)=>{
