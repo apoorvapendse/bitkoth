@@ -141,6 +141,8 @@ const PasswordMenu = ({ passwordName, passwordValue,mail,setCreatePassword,array
                 <button >Save</button>
 
             </form>
+            <br />
+                <button onClick={()=>setCreatePassword(false)} >Cancel</button>
         </div>
     )
 }

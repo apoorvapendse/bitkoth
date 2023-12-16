@@ -86,17 +86,33 @@ const PasswordList = ({ passwords,mail,masterPassword }: PropType) => {
     {pwds?.map((item,index)=>{
       return(
             <p>
-            <span className="password-text">Name:{item.name}</span>
+            <span className="password-text">{item.name}</span>
             <br />
-            <span className="password-text">Password:{item.password}</span>
+            <span className="password-text nodisplay" 
+              id={`${index}`}
+            >{item.password}</span>
             <br />
            
             <span className='pasword-options'>
+            {/* show button */}
+            <button
+              onClick={()=>{
+
+                const ele = document.getElementById(`${index}`);
+                console.log(ele);
+                ele?.classList.toggle("nodisplay")
+              }}
+            >Show</button>
+
+
+              {/* copy button */}
             <button onClick={()=>{
               navigator.clipboard.writeText(item.password).then(()=>{
                 alert("copied to clipboard");
               })
-            }}>copy</button>
+            }}>Copy</button>
+
+            {/*edit button  */}
             <button onClick={()=>{
               setEditPassword({
                 arrayIndex:index,
@@ -104,17 +120,23 @@ const PasswordList = ({ passwords,mail,masterPassword }: PropType) => {
                 passwordValue:item.password
               })
               
-            }}>edit</button>
+            }}>Edit</button>
 
             </span>
             </p>
         )
       })}
 
+      </div>
       <button className='create-password-btn' onClick={()=>{
         setCreatePassword(true);
-      }}>+</button>
-      </div>
+
+      }}
+      style={{
+        scale:"1.5",
+        marginTop:"12px"
+      }}
+      >+</button>
     </>
   )
 };
