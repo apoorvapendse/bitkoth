@@ -57,6 +57,31 @@ const PasswordList = ({ passwords,mail,masterPassword }: PropType) => {
 
   }
 
+
+async function deletePassword(arrayIndex:Number){
+    const apiUrl = "https://bitkoth.onrender.com/api/delete-password";
+    const postData ={
+      email:mail,
+      masterPassword:masterPassword,
+      arrayIndex:arrayIndex
+    }
+
+    const response = await fetch(apiUrl,{
+      method:"POST",
+      headers:{
+        'Content-Type': 'application/json',
+      },
+      body:JSON.stringify(postData)
+    })
+
+    if(response.status!==200){
+      alert("unable to delete password, try again later.")
+    }
+    else{
+      fetchPasswords();
+    }
+}
+
   useEffect(()=>{
     fetchPasswords();
   },[createPassword,editPassword])
@@ -124,6 +149,12 @@ const PasswordList = ({ passwords,mail,masterPassword }: PropType) => {
               })
               
             }}>Edit</button>
+
+            <button
+            onClick={()=>{
+              deletePassword(index);
+            }}
+            >Del</button>
 
             </span>
             </p>

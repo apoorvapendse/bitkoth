@@ -69,6 +69,13 @@ const PasswordMenu = ({ passwordName, passwordValue,mail,setCreatePassword,array
       }
     }
 
+
+
+    const handleCancelClick = () => {
+        setEditPassword({passwordName:"",passwordValue:"",arrayIndex:-1});
+        setCreatePassword(false);
+    };
+
     async function editPassword(){
         
         const apiUrl = "https://bitkoth.onrender.com/api/edit-password"
@@ -142,7 +149,7 @@ const PasswordMenu = ({ passwordName, passwordValue,mail,setCreatePassword,array
 
             </form>
             <br />
-                <button onClick={()=>setCreatePassword(false)} >Cancel</button>
+                <button onClick={handleCancelClick} >Cancel</button>
         </div>
     )
 }
