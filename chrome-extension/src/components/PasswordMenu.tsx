@@ -72,7 +72,7 @@ const PasswordMenu = ({ passwordName, passwordValue,mail,setCreatePassword,array
 
 
     const handleCancelClick = () => {
-        setEditPassword({passwordName:"",passwordValue:"",arrayIndex:-1});
+        setEditPassword({passwordName:"",passwordValue:"",arrayIndex :-1});
         setCreatePassword(false);
     };
 
