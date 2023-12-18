@@ -1,7 +1,7 @@
 # bitkoth
 cross platform password manager with cloud sync, no ios support (cuz poverty)
 
-
+### Extension Demo: https://youtu.be/C4WJR8SFbVE
 ## How to setup chrome-extension locally:
 
 - First, clone the repo
