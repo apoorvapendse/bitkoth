@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- res/drawable/focused_thumb.xml -->
+
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <size android:width="24dp" android:height="24dp" /> <!-- Adjust the size as needed -->
+    <solid android:color="#00ff00" /> <!-- Color for the thumb when focused -->
+</shape>

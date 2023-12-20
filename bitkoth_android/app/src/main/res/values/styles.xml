@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Style for EditText -->
+    <style name="AppTheme.EditText">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:hint">Email</item>
+        <item name="android:inputType">textEmailAddress</item>
+        <item name="android:minHeight">48dp</item>
+        <item name="android:padding">8dp</item>
+    </style>
+
+    <!-- Style for Password EditText -->
+    <style name="AppTheme.PasswordEditText">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:hint">Master Password</item>
+        <item name="android:inputType">textPassword</item>
+        <item name="android:minHeight">48dp</item>
+        <item name="android:padding">8dp</item>
+    </style>
+
+    <!-- Style for Button -->
+    <style name="AppTheme.Button">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">16dp</item>
+        <item name="android:text">Submit</item>
+    </style>
+
+</resources>
