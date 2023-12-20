@@ -21,12 +21,22 @@ BitKoth is the epitome of user-friendly yet robust password management. By emplo
 
 ## How to setup chrome-extension locally:
 
+
+
 - First, clone the repo
     -  ```git clone https://github.com/apoorvapendse/bitkoth```
 - Now install the dependencies in the chrome-extension folder
     - ```cd ./bitkoth/chrome-extension && pnpm i```
 - Now make the dist folder using the following command:
     - ```pnpm run build```
+      
+- For self hosted db and backend ***(optional)*** 
+    - Go to the backend directory and run ```pnpm i```
+    - Create a .env file and add the variables
+     - ```MONGO_URI``` of you atlas cluster or local mongodb server
+     - Also add a ```PORT``` variable to determine the port to run the backend server on 
+
+
 
 - Go to chrome extensions icon and click on manage extensions 
 ![image](https://github.com/apoorvapendse/bitkoth/assets/102853901/6c9fd287-bc98-4f20-8c0d-64fff1517628)
