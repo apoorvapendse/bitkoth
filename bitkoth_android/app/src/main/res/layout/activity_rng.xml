@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="@drawable/gradient_background"
+    tools:context=".RNG">
+
+<EditText
+android:id="@+id/editTextLength"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:layout_marginBottom="8dp"
+android:hint="Password Length"
+android:inputType="number"
+android:minHeight="48dp"
+android:background="@drawable/edittext_selector"     />
+
+<CheckBox
+android:id="@+id/checkBoxSpecialChars"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="Include Special Chars"
+android:layout_below="@id/editTextLength"
+android:layout_marginTop="8dp"
+android:checked="true"
+android:textColor="@android:color/white"
+    />
+
+<CheckBox
+android:id="@+id/checkBoxNumbers"
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:text="Include Numbers"
+android:layout_below="@id/checkBoxSpecialChars"
+android:layout_marginTop="8dp"
+android:checked="true"
+android:textColor="@android:color/white"
+    />
+
+<Button
+android:id="@+id/buttonGenerate"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:layout_below="@id/checkBoxNumbers"
+android:layout_marginTop="24dp"
+android:text="Generate Password"
+android:background="@drawable/button_selector"
+    />
+
+<Button
+android:id="@+id/buttonCopy"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:layout_below="@id/textViewResult"
+android:layout_marginTop="24dp"
+android:text="Next"
+android:background="@drawable/button_selector"    />
+
+<TextView
+android:id="@+id/textViewResult"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:layout_below="@id/buttonGenerate"
+android:layout_marginTop="24dp"
+android:text="Generated Password Will Appear Here"
+android:textColor="@android:color/white"
+    />
+
+    </RelativeLayout>
