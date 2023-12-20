@@ -37,8 +37,9 @@ BitKoth is the epitome of user-friendly yet robust password management. By emplo
      - Also add a ```PORT``` variable to determine the port to run the backend server on 
 
 
-
+### How to add the chrome extension locally after running the build command
 - Go to chrome extensions icon and click on manage extensions 
+
 ![image](https://github.com/apoorvapendse/bitkoth/assets/102853901/6c9fd287-bc98-4f20-8c0d-64fff1517628)
 
 - Enable developer mode
