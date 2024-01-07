@@ -1,6 +1,6 @@
 # bitkoth
 
-Note: The backend is hosted on free tier of Render, and does take time to spin up if not in use already, sorry for the inconvenience
+## Note: The backend is hosted on free tier of Render, and does take time to spin up if not in use already, sorry for the inconvenience
 ### Extension Link: https://chromewebstore.google.com/detail/mcifhdaaijhfjlehkihmmpbfpfhmgneh?hl=en
 ### Extension Demo: https://youtu.be/C4WJR8SFbVE
 
