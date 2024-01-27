@@ -12,8 +12,9 @@ import {
   SafeAreaView, Text,
 } from 'react-native';
 import Login from './components/Login';
-import Screen2 from './components/Screen2';
+import PasswordsScreen from './components/PasswordsScreen';
 import { UserContextProvider } from './context/UserContext';
+import Register from './components/Register';
 
 const Stack = createNativeStackNavigator()
 
@@ -27,7 +28,8 @@ function App(): React.JSX.Element {
     <NavigationContainer>
       <Stack.Navigator>
         <Stack.Screen name='Login' component={Login} options={{headerShown:false}}/>
-        <Stack.Screen name='Screen2' component={Screen2} 
+        <Stack.Screen name='Register' component={Register} options={{headerShown:false}}/>
+        <Stack.Screen name='PasswordScreen' component={PasswordsScreen} 
         options={{
           headerShown: false, 
           gestureEnabled: false, // Disable swipe back gesture

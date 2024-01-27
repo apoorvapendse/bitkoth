@@ -1,5 +1,7 @@
 import { ScrollView, StyleSheet, Text, View } from "react-native";
 import { useDetails } from "../context/UserContext";
+import Toast from "react-native-toast-message";
+import { useEffect } from "react";
 
 interface PassObj {
   _id: string;
@@ -7,9 +9,14 @@ interface PassObj {
   password: string;
 }
 
-const Screen2 = () => {
+const PasswordsScreen = () => {
   const { passwords } = useDetails();
-
+  useEffect(()=>{
+    Toast.show({
+      type:"success",
+      text1:"Logged In Successfully!"
+    })
+  },[])
   return (
     <ScrollView contentContainerStyle={styles.MainContainer}>
       {passwords.map((item) => (
@@ -18,11 +25,13 @@ const Screen2 = () => {
           <Text style={styles.NormalText}>{item.password}</Text>
         </View>
       ))}
+
+      <Toast/>
     </ScrollView>
   );
 };
 
-export default Screen2;
+export default PasswordsScreen;
 
 const styles = StyleSheet.create({
   MainContainer: {

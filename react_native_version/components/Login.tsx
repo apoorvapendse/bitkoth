@@ -41,7 +41,7 @@ const Login = ({navigation}: {navigation: any}) => {
 
         let passwords = response.data.passwords;
         setPasswords(passwords);
-        navigation.replace("Screen2")
+        navigation.replace("PasswordScreen")
 
         // Handle the response as needed
 
@@ -97,8 +97,8 @@ const Login = ({navigation}: {navigation: any}) => {
         value={masterPassword}
       />
 
-      <Button title="Login" color={'blueviolet'} onPress={goToSecondScreen} />
-
+      <Button title="Login" color={'#720455'} onPress={goToSecondScreen} />
+      <Text style={{color:"#910A67"}} onPress={()=>navigation.replace("Register")}>Create Account</Text>
       <Toast />
     </View>
   );
@@ -108,7 +108,7 @@ const styles = StyleSheet.create({
   MainContainer: {
     display: 'flex',
     flexDirection: 'column',
-    backgroundColor: 'black',
+    backgroundColor: '#030637',
     justifyContent: 'center',
     alignItems: 'center',
     flex: 1,
@@ -123,7 +123,7 @@ const styles = StyleSheet.create({
   InputField: {
     color: 'white',
     paddingHorizontal: 12,
-    borderColor: 'white',
+    borderColor: '#3C0753',
     borderWidth: 1,
     width: '70%',
     borderRadius: 14,
