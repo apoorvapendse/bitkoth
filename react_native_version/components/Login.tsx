@@ -4,14 +4,16 @@ import {
   StyleSheet,
   Text,
   TextInput,
-  TouchableOpacity,
   View,
-  ToastAndroid,
 } from 'react-native';
 import Toast from 'react-native-toast-message';
 import {useDetails} from '../context/UserContext';
+import { RootStackParamList } from '../App';
+import { StackNavigationProp } from '@react-navigation/stack';
 
-const Login = ({navigation}: {navigation: any}) => {
+type LoginScreenNavigationProp = StackNavigationProp<RootStackParamList, 'Login'>;
+
+const Login = ({navigation}: {navigation: LoginScreenNavigationProp}) => {
   const {
     email,
     setEmail,

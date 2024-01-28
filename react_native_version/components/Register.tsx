@@ -10,8 +10,12 @@ import {
 } from 'react-native';
 import Toast from 'react-native-toast-message';
 import {useDetails} from '../context/UserContext';
+import { StackNavigationProp } from '@react-navigation/stack';
+import { RootStackParamList } from '../App';
 
-const Register = ({navigation}:{navigation:any}) => {
+type RegistrationScreenNavProps = StackNavigationProp<RootStackParamList,"Register">;
+
+const Register = ({navigation}:{navigation:RegistrationScreenNavProps}) => {
   const {email, setEmail, masterPassword, setMasterPassword,passwords,setPasswords} = useDetails();
 
 
