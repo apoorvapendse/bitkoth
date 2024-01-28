@@ -11,10 +11,11 @@ import {useEffect} from 'react';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RootStackParamList } from '../App';
+import axios from 'axios';
 
 type PasswordScreenPropType = StackNavigationProp<RootStackParamList,"PasswordScreen">
 const PasswordsScreen = ({navigation}:{navigation:PasswordScreenPropType}) => {
-  const {passwords} = useDetails();
+  const {passwords,email,masterPassword,setPasswords} = useDetails();
 
 
   useEffect(() => {
@@ -27,6 +28,37 @@ const PasswordsScreen = ({navigation}:{navigation:PasswordScreenPropType}) => {
 
   function editPassword(idx:number){
     navigation.push("PasswordEdit",{passwordName:passwords[idx].name,passwordValue:passwords[idx].password,passwordIndex:idx})
+  }
+
+  async function handleDeletion(idx:number)
+  {
+     const apiURL = `https://bitkoth.onrender.com/api/delete-password`;
+     let bodyObj = {
+       email:email,
+       masterPassword:masterPassword,
+       arrayIndex:idx
+     }
+
+     const response = await axios.post(apiURL,bodyObj,{
+      headers:{
+        'Content-Type':'application/json'
+      }
+     })
+     console.log(response.data);
+     Toast.show({
+      text1:"Password deleted successfully!",
+      type:"success"
+     })
+
+     const updatedListOfPasswords = await axios.post(`https://bitkoth.onrender.com/api/get-all-passwords`,{email,masterPassword},{
+      headers:{
+        "Content-Type":"application/json"
+      }
+     })
+     console.log(updatedListOfPasswords.data)
+     setPasswords(updatedListOfPasswords.data.passwords)
+
+     
   }
   return (
     <ScrollView contentContainerStyle={styles.MainContainer}>
@@ -44,7 +76,7 @@ const PasswordsScreen = ({navigation}:{navigation:PasswordScreenPropType}) => {
             <TouchableOpacity onPress={()=>editPassword(index)}>
               <Icon name="edit" size={30} color="#fff" />
             </TouchableOpacity>
-            <TouchableOpacity>
+            <TouchableOpacity onPress={()=>handleDeletion(index)}>
               <Icon name="trash" size={30} color="#910A67" />
             </TouchableOpacity>
 
