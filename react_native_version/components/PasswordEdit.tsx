@@ -13,6 +13,8 @@ import {useDetails} from '../context/UserContext';
 import Toast from 'react-native-toast-message';
 
 function PasswordEdit({route, navigation}: any) {
+
+    
   let {passwordName, passwordValue, passwordIndex} = route.params;
   let {email, passwords, setPasswords} = useDetails();
   const [newPassName, setNewPassName] = useState(passwordName);
@@ -66,7 +68,7 @@ function PasswordEdit({route, navigation}: any) {
           return newPasswordList;
         });
 
-        
+
         Toast.show({
           type: 'success',
           text1: 'Password updated sucessfully!',

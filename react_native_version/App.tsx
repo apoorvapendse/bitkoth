@@ -16,13 +16,15 @@ import PasswordsScreen from './components/PasswordsScreen';
 import { UserContextProvider } from './context/UserContext';
 import Register from './components/Register';
 import PasswordEdit from './components/PasswordEdit';
+import NewPasswordScreen from './components/NewPasswordScreen';
 
 const Stack = createNativeStackNavigator()
 
 export type RootStackParamList = {
   Login: undefined;
   Register: undefined;
-  PasswordScreen: undefined
+  PasswordScreen: undefined,
+  NewPasswordScreen:undefined,
   PasswordEdit: {passwordName:string,passwordValue:string,passwordIndex:number}
   // ... other screens
 };
@@ -35,9 +37,10 @@ function App(): React.JSX.Element {
 
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name='Login' component={Login} options={{headerShown:false}}/>
+        <Stack.Screen name='Login' component={Login} options={{headerShown:false}} />
         <Stack.Screen name='Register' component={Register} options={{headerShown:false}}/>
         <Stack.Screen name='PasswordEdit' component={PasswordEdit} options={{headerShown:false}}/>
+        <Stack.Screen name='NewPasswordScreen' component={NewPasswordScreen} options={{headerShown:false}}/>
         <Stack.Screen name='PasswordScreen' component={PasswordsScreen} 
         options={{
           headerShown: false, 

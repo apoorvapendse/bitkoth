@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@react-native-assets/slider": "^7.0.7",
+    "@react-native-clipboard/clipboard": "^1.13.2",
     "@react-navigation/native": "^6.1.9",
     "@react-navigation/native-stack": "^6.9.17",
     "@react-navigation/stack": "^6.3.20",
