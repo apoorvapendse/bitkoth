@@ -73,12 +73,12 @@ const PasswordsScreen = ({
       },
     });
     console.log(response.data);
+    await fetchPasswords();
     Toast.show({
       text1: 'Password deleted successfully!',
       type: 'success',
     });
 
-    await fetchPasswords();
   }
 
   const onRefresh = async () => {
