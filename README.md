@@ -5,9 +5,9 @@
 ### Extension Demo: https://youtu.be/C4WJR8SFbVE
 
 ## Intro
-Introducing BitKoth, a powerful Chrome extension designed to elevate your online security through an innovative password management…
 
-Introducing BitKoth, a powerful Chrome extension designed to elevate your online security through an innovative password management system. BitKoth employs a unique approach, utilizing a common RSA key to encrypt and decrypt stored passwords, all while ensuring the highest standards of protection for your sensitive data.
+
+Introducing BitKoth, a powerful Chrome extension and android app designed to elevate your online security through an innovative password management system. BitKoth employs a unique approach, utilizing a common RSA key to encrypt and decrypt stored passwords, all while ensuring the highest standards of protection for your sensitive data.
 
 Upon registration, users are prompted to establish a master password—an essential component for securing access to their encrypted credentials. This master password serves as the gateway for subsequent logins, offering an additional layer of security to safeguard your digital identity.
 
@@ -15,7 +15,7 @@ BitKoth employs the bcrypt hashing algorithm to secure the master password. The 
 
 What sets BitKoth apart is its use of a common RSA key for encrypting and decrypting passwords. Each password is individually encrypted using this shared key, bolstering security without sacrificing user convenience. This approach ensures that all passwords are protected by a uniform layer of encryption, making it challenging for unauthorized entities to compromise the stored data.
 
-When authorized clients request access to stored passwords, BitKoth's server validates their identity by decrypting the master password hash using the bcrypt algorithm. Upon successful verification, the common RSA key is utilized to decrypt the passwords from the database. This streamlined process guarantees secure and efficient access to your sensitive information while maintaining the integrity of the encryption.
+When authorized clients request access to stored passwords, BitKoth's server validates their identity by matching the master password hash using the bcrypt algorithm. Upon successful verification, the common RSA key is utilized to decrypt the passwords from the database. This streamlined process guarantees secure and efficient access to your sensitive information while maintaining the integrity of the encryption.
 
 BitKoth is the epitome of user-friendly yet robust password management. By employing a common RSA key, it offers a seamless and secure solution to protect your passwords. Elevate your online security with BitKoth—a Chrome extension that prioritizes both user convenience and the highest standards of data protection in today's ever-evolving digital landscape.
 
