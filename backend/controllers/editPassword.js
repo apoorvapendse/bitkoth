@@ -12,7 +12,7 @@ export async function editPassword(req, res) {
                 // Update the password at the specified index
                 currUser.savedPasswords[arrayIndex] = {
                     name: passwordName,
-                    password: passwordValue
+                    password: encryptionKey.encrypt(passwordValue,"base64")
                 };
 
                 await currUser.save();
