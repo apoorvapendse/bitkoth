@@ -150,7 +150,7 @@ function PasswordEdit({route, navigation}: any) {
           iconStyle={{borderColor: 'red'}}
           innerIconStyle={{borderWidth: 2}}
           onPress={(isChecked: boolean) => {
-            setAddNumbers(isChecked);
+            setAddNumbers(prev=>!prev);
             updatePass();
           }}
         />
@@ -165,7 +165,7 @@ function PasswordEdit({route, navigation}: any) {
           iconStyle={{borderColor: 'red'}}
           innerIconStyle={{borderWidth: 2}}
           onPress={(isChecked: boolean) => {
-            setAddSpecialChars(isChecked);
+            setAddSpecialChars(prev=>!prev);
             updatePass();
           }}
         />

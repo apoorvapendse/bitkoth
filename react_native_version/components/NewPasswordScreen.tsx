@@ -138,7 +138,7 @@ return(
       iconStyle={{borderColor: 'red'}}
       innerIconStyle={{borderWidth: 2}}
       onPress={(isChecked: boolean) => {
-        setAddNumbers(isChecked);
+        setAddNumbers(prev=>!prev);
         updatePass();
       }}
     />
@@ -153,7 +153,7 @@ return(
       iconStyle={{borderColor: 'red'}}
       innerIconStyle={{borderWidth: 2}}
       onPress={(isChecked: boolean) => {
-        setAddSpecialChars(isChecked);
+        setAddSpecialChars(prev=>!prev);
         updatePass();
       }}
     />
