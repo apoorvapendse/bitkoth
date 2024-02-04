@@ -1,4 +1,5 @@
 import { Users } from "../model/User.js";
+import { encryptionKey } from "../index.js";
 
 export async function editPassword(req, res) {
     let { email, passwordName, passwordValue, arrayIndex } = req.body;
@@ -16,6 +17,7 @@ export async function editPassword(req, res) {
                 };
 
                 await currUser.save();
+                console.log("password saved successfully")
                 res.status(200).json({ message: "Successfully modified password!" });
             } else {
                 res.status(400).json({ message: "Invalid array index provided" });
